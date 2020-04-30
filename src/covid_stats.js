@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 0; i < data["data"].length; i++) {
             country = document.createElement('option');
             country.text = data["data"][i].name;
-            country.text = data["data"][i].name;
             country.value = data.data[i].iso;
             countries.appendChild(country);
         }

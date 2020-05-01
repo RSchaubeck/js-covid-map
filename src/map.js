@@ -1,3 +1,8 @@
+const req = new XMLHttpRequest();
+
+req.open('GET', 'https://restcountries.eu/rest/v2/all');
+req.send();
+
 document.addEventListener("DOMContentLoaded", () => {
     const corner1 = L.latLng(-60, -180);
     const corner2 = L.latLng(70, 180);
@@ -6,8 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const map = L.map('map')
         .setView([0, 0], 2)
         .setMaxBounds(boundary);
-
-    
 
     L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -18,21 +21,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     L.svg().addTo(map);
 
-    // Create data for circles:
-    var markers = [
-        { long: 9.083, lat: 42.149 }, // corsica
-        { long: 7.26, lat: 43.71 }, // nice
-        { long: 2.349, lat: 48.864 }, // Paris
-        { long: -1.397, lat: 43.664 }, // Hossegor
-        { long: 3.075, lat: 50.640 }, // Lille
-        { long: -3.83, lat: 48 }, // Morlaix
-    ];
+    let coords = [];
+
+    req.onload = function () {
+        const info = JSON.parse(req.responseText);
+        let countries = document.getElementById('country');
+        let names = countries.childNodes.forEach(el => {
+            return el.text
+        });
+
+        console.log(countries);
+
+        info.forEach((el, idx) => {
+            
+        });
+    }
+    
+    // var coords = [
+    //     { long: 9.083, lat: 42.149 }, // corsica
+    //     { long: 7.26, lat: 43.71 }, // nice
+    //     { long: 2.349, lat: 48.864 }, // Paris
+    //     { long: -1.397, lat: 43.664 }, // Hossegor
+    //     { long: 3.075, lat: 50.640 }, // Lille
+    //     { long: -3.83, lat: 48 }, // Morlaix
+    // ];
 
     // Select the svg area and add circles:
     d3.select("#map")
         .select("svg")
         .selectAll("myCircles")
-        .data(markers)
+        .data(coords)
         .enter()
         .append("circle")
         .attr("cx", function (d) { return map.latLngToLayerPoint([d.lat, d.long]).x })

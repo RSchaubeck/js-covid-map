@@ -1,5 +1,5 @@
 const xhr = new XMLHttpRequest();
-xhr.open('GET', 'https://covid-api.com/api/regions');
+xhr.open('GET', 'https://corona.lmao.ninja/v2/countries?yesterday&sort');
 xhr.send();
 
 // const req = new XMLHttpRequest();
@@ -7,27 +7,22 @@ xhr.send();
 // req.send();
 
 document.addEventListener("DOMContentLoaded", () => {
-    let countryArr = [];
     let countries = document.getElementById('country');
-    let coords = [];
+    // let coords = [];
     
     xhr.onload = function () {
         const data = JSON.parse(xhr.responseText);
         let country;
-        for (let i = 0; i < data["data"].length; i++) {
+        for (let i = 0; i < data.length; i++) {
             country = document.createElement('option');
-            country.text = data["data"][i].name;
-            country.value = data["data"][i].iso;
-            if (country.text !== "Diamond Princess") {
-                countryArr.push(country);
-            }
+            country.text = data[i].country;
+            country.value = data[i].countryInfo.iso3;
+            countries.appendChild(country);
+            // let coord = { long: data[i].countryInfo.long, lat: data[i].countryInfo.lat};
+            // coords.push(coord);
         }
-        countryArr.sort((a, b) => a.text.localeCompare(b.text));
-    
-        countryArr.forEach(el => {
-            countries.appendChild(el)
-        });
     }
+
 
     const corner1 = L.latLng(-60, -180);
     const corner2 = L.latLng(70, 180);
@@ -47,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     L.svg().addTo(map);
     
 
-    var coord = [
+    let coords = [
         { long: 65, lat: 33 },
         { long: 20, lat: 41 },
         { long: 3, lat: 28 },
@@ -225,22 +220,25 @@ document.addEventListener("DOMContentLoaded", () => {
         { long: 100, lat: 60}
     ];
 
-    console.log(coords);
+    d3.json("https://corona.lmao.ninja/v2/countries?yesterday&sort", function (data) {
+        
+    });
 
-    // Select the svg area and add circles:
-    d3.select("#map")
-        .select("svg")
-        .selectAll("myCircles")
-        .data(coord)
-        .enter()
-        .append("circle")
-        .attr("cx", function (d) { return map.latLngToLayerPoint([d.lat, d.long]).x })
-        .attr("cy", function (d) { return map.latLngToLayerPoint([d.lat, d.long]).y })
-        .attr("r", 7)
-        .style("fill", "purple")
-        .attr("stroke", "red")
-        .attr("stroke-width", 1)
-        .attr("fill-opacity", .3)
+        // d3.select("#map")
+        //     .select("svg")
+        //     .selectAll("myCircles")
+        //     .data(coords)
+        //     .enter()
+        //     .append("g")
+        //     .selectAll("circle")
+        //     .attr("cx", function (d) { return map.latLngToLayerPoint([d.lat, d.long]).x })
+        //     .attr("cy", function (d) { return map.latLngToLayerPoint([d.lat, d.long]).y })
+        //     .attr("r", 15)
+        //     .style("fill", "purple")
+        //     .attr("stroke", "red")
+        //     .attr("stroke-width", 1)
+        //     .attr("fill-opacity", .3)
+
 
     function update() {
         d3.selectAll("circle")
@@ -249,18 +247,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     map.on("moveend", update)
-
-    function changeCountry() {
-        let iso = countries.options[countries.selectedIndex].value;
-        const req = new XMLHttpRequest();
-        req.open('GET', `https://restcountries.eu/rest/v2/alpha/${iso}`);
-        req.send();
-        req.onload = function () {
-            const info = JSON.parse(req.responseText);
-            var pos = new L.PosAnimation();
-            pos.run(el, [info.latlng], 0.5);
-        }
-    }
     
 });
-

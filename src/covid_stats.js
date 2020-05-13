@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
         maxBoundsViscosity: 1.0,
         minZoom: 2,
-        maxZoom: 5
+        maxZoom: 8
     }).addTo(map);
 
 

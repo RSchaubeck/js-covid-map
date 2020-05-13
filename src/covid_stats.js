@@ -1,10 +1,12 @@
-const corner1 = L.latLng(-60, -180);
-const corner2 = L.latLng(70, 180);
-const boundary = L.latLngBounds(corner1, corner2);
+// const corner1 = L.latLng(-60, -180);
+// const corner2 = L.latLng(70, 180);
+// const boundary = L.latLngBounds(corner1, corner2);
 
-const map = L.map('map')
-    .setView([0, 0], 2)
-    .setMaxBounds(boundary);
+// const map = L.map('map')
+//     .setView([0, 0], 2)
+//     .setMaxBounds(boundary);
+
+// const map = document.getElementById('map');
 
 async function getCountryinfo() {
     let countries = document.getElementById('country');

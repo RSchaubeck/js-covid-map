@@ -41,7 +41,16 @@ async function getCountryinfo() {
                     country.text = data[i].country;
                     country.value = data[i].countryInfo.iso3;
                     countries.appendChild(country);
-                    let coord = { long: data[i].countryInfo.long, lat: data[i].countryInfo.lat, radius: (data[i][stat] / divisor) };
+                    let coord = { 
+                        long: data[i].countryInfo.long, 
+                        lat: data[i].countryInfo.lat, 
+                        radius: (data[i][stat] / divisor), 
+                        cases: data[i].cases, 
+                        deaths: data[i].deaths,
+                        recovered: data[i].recovered,
+                        cpm: data[i].casesPerOneMillion,
+                        dpm: data[i].deathsPerOneMillion
+                    };
                     coords.push(coord);
                 }
                 resolve(coords);
@@ -72,6 +81,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 .attr("stroke", "red")
                 .attr("stroke-width", 1)
                 .attr("fill-opacity", .1)
+                .on("mouseover", function(d) {
+                    d3.select(this.parentNode)
+                        .select("circle")
+                        // .data(coords)
+                        // .enter()
+                        // .attr("r", function (d) { return d.radius * 2 })
+                        .style("fill", "darkred")
+                        .attr("stroke", "darkred")
+                        .attr("stroke-width", 3)
+                        .attr("fill-opacity", .5)
+                })
+                // .on("mouseout", handleMouseOut)
         } catch (err) {
             console.log(err);
         }
@@ -107,24 +128,19 @@ function changeCountry() {
     }
 }
 
-async function drawCircles() {
-    d3.selectAll("svg > *").remove();
-    try {
-        let coords = await getCountryinfo();
-        d3.select("#map")
-            .select("svg")
-            .selectAll("myCircles")
-            .data(coords)
-            .enter()
-            .append("circle")
-            .attr("cx", function (d) { return map.latLngToLayerPoint([d.lat, d.long]).x })
-            .attr("cy", function (d) { return map.latLngToLayerPoint([d.lat, d.long]).y })
-            .attr("r", function (d) { return d.radius })
-            .style("fill", "red")
-            .attr("stroke", "red")
-            .attr("stroke-width", 1)
-            .attr("fill-opacity", .1)
-    } catch (err) {
-        console.log(err);
-    }
-}
+// async function handleMouseOver() {
+//     try {
+//         let coords = await getCountryinfo();
+//         d3.select(this)
+//             .select("svg")
+//             .data(coords)
+//             .enter()
+//             .attr("r", function (d) { return d.radius * 2 })
+//             .style("fill", "darkred")
+//             .attr("stroke", "darkred")
+//             .attr("stroke-width", 1)
+//             .attr("fill-opacity", .1)
+//     } catch (err) {
+//         console.log(err);
+//     }
+// }

@@ -25,7 +25,7 @@ Currently, the world is at a halt due to the COVID-19 global pandemic. The purpo
 
 ## Wireframes
 
-This app will feature one main page, comprised of a sidebar for holding COVID-19 input fields a user wants to see, and a main section of a world map. The world map will be overlaid with a scroll bar for changing the date, and data visualizations based on the user's input. If the bonus functionality is met then a user can scroll down, and look at different graphical interpretations of COVID statistics. 
+This app will feature one main page, comprised of a sidebar for holding COVID-19 input fields a user wants to see, and a main section of a world map. The world map will be overlaid with data visualizations based on the user's input. If the bonus functionality is met then a user can scroll down, and look at different graphical interpretations of COVID statistics. 
 
 ![Wireframe](https://i.imgur.com/CJkOSPf.png)
 
@@ -51,6 +51,6 @@ This app will feature one main page, comprised of a sidebar for holding COVID-19
 
 * Day 3: Using D3 be able to display the data on the map
 
-* Day 4: Set up date scroll, and make sure data dynamically changes as date does
+* Day 4: Set up hover effects that display selected data
 
 * Day 5: Finish anything that's not completed/DRY up code. Add bonus functionality

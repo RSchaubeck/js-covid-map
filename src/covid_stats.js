@@ -44,8 +44,8 @@ async function getCountryinfo() {
                         cases: data[i].cases, 
                         deaths: data[i].deaths,
                         recovered: data[i].recovered,
-                        cpm: data[i].casesPerOneMillion,
-                        dpm: data[i].deathsPerOneMillion
+                        casesPerOneMillion: data[i].casesPerOneMillion,
+                        deathsPerOneMillion: data[i].deathsPerOneMillion
                     };
                     coords.push(coord);
                 }

@@ -43,6 +43,13 @@ select {
     color: rgb(119, 117, 117);
 }
 
+.fa-github {
+    color: silver;
+    font-size: 40px;
+    position: absolute;
+    bottom: 3%;
+}
+
 #map {
     width: 75%;
     height: 100%;

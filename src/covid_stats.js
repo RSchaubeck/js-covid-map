@@ -36,11 +36,13 @@ async function getCountryinfo() {
                     country.text = data[i].country;
                     country.value = data[i].countryInfo.iso3;
                     countries.appendChild(country);
+                    let r = data[i][stat] / divisor
+                    r < 3 ? r = 3 : r = r;
                     let coord = { 
                         name: data[i].country,
                         long: data[i].countryInfo.long, 
                         lat: data[i].countryInfo.lat, 
-                        radius: (data[i][stat] / divisor), 
+                        radius: r, 
                         cases: data[i].cases, 
                         deaths: data[i].deaths,
                         recovered: data[i].recovered,

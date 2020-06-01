@@ -61,7 +61,7 @@ div.popup {
      position: absolute;
      text-align: center;
      background: black;
-     color: #ebd2d2;
+     color: red;
      pointer-events: none;
      border-radius: 5px;
 }

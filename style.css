@@ -25,9 +25,32 @@ body {
     z-index: 200;
 }
 
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #title {
     font-size: 36px;
     color: silver;
+    margin: 0;
+    line-height: 0;
+}
+
+p {
+    color: silver;
+    font-size: 14px;
+}
+
+#name {
+    line-height: 0;
+}
+
+#directions {
+    text-align: center;
+    width: 80%;
+    margin-bottom: 25px;
 }
 
 form {
@@ -43,11 +66,16 @@ select {
     color: rgb(119, 117, 117);
 }
 
-.fa-github {
+.icons {
+    display: flex;
+    width: 35%;
+    justify-content: space-between;
+
+}
+
+.fab {
     color: silver;
-    font-size: 40px;
-    position: absolute;
-    bottom: 3%;
+    font-size: 36px;
 }
 
 #map {
@@ -61,7 +89,7 @@ div.popup {
      position: absolute;
      text-align: center;
      background: black;
-     color: #ebd2d2;
+     color: red;
      pointer-events: none;
      border-radius: 5px;
 }

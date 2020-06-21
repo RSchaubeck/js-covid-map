@@ -10,12 +10,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.1/leaflet.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
 
+    <link rel="icon" type="image/png" sizes="32x32" href="./src/images/favicon.png">
+    
     <title>COVID World Map</title>
 </head>
 <body>
     <div class="page-container"></div>
         <div id="sidebar">
-            <h1 id="title">COVID-19 Stats</h1> <br />
+            <div class="info">
+                <h1 id="title">COVID-19 Stats</h1> <br />
+                <p id="name">by Richard Schaubeck</p>
+                <p id="directions">Choose the country you want the map to pan in on, and the COVID metric to be displayed</p>
+            </div>
             <form>
                 
                 <select id="country" onchange="changeCountry()">
@@ -36,7 +42,11 @@
                 </select>
 
             </form>
-            <a href="https://github.com/RSchaubeck/js-covid-map" target="_blank"><i class="fab fa-github"></i></a>
+            <div class="icons">
+                <a href="https://github.com/RSchaubeck/js-covid-map" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://rschaubeck.github.io/" target="_blank"><i class="fas fa-globe fab"></i></a>
+                <a href="https://github.com/RSchaubeck/js-covid-map" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
         </div>
         <div id="map"></div>
     </div>

@@ -1,4 +1,4 @@
-# js-covid-map
+# [js-covid-map](https://rschaubeck.github.io/js-covid-map/)
 
 
 ## Background and Overview
@@ -27,7 +27,7 @@ Currently, the world is at a halt due to the COVID-19 global pandemic. The purpo
 
 This app will feature one main page, comprised of a sidebar for holding COVID-19 input fields a user wants to see, and a main section of a world map. The world map will be overlaid with data visualizations based on the user's input. If the bonus functionality is met then a user can scroll down, and look at different graphical interpretations of COVID statistics. 
 
-![Wireframe](https://i.imgur.com/CJkOSPf.png)
+![Wireframe](https://i.imgur.com/1bieQ6P.png)
 
 <br />
 

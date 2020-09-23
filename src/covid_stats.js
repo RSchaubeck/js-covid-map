@@ -11,19 +11,19 @@ async function getCountryinfo() {
                 let divisor;
                 switch (stat) {
                     case "cases":
-                        divisor = 10000;
+                        divisor = 30000;
                         break;
                     case "deaths":
-                        divisor = 1000;
-                        break;
-                    case "recovered":
                         divisor = 2000;
                         break;
+                    case "recovered":
+                        divisor = 30000;
+                        break;
                     case "casesPerOneMillion":
-                        divisor = 200;
+                        divisor = 800;
                         break;
                     case "deathsPerOneMillion":
-                        divisor = 30;
+                        divisor = 20;
                         break;
                     default:
                         break;
@@ -105,7 +105,7 @@ async function drawCircles() {
                     .attr("stroke-width", 1)
                     .attr("fill-opacity", .1)
                 popup.transition()
-                    .duration('100')
+                    .duration(100)
                     .style("opacity", 0)
             })
     } catch (err) {

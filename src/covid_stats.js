@@ -14,16 +14,16 @@ async function getCountryinfo() {
                         divisor = 100000;
                         break;
                     case "deaths":
-                        divisor = 2000;
+                        divisor = 4000;
                         break;
                     case "recovered":
                         divisor = 100000;
                         break;
                     case "casesPerOneMillion":
-                        divisor = 800;
+                        divisor = 1000;
                         break;
                     case "deathsPerOneMillion":
-                        divisor = 20;
+                        divisor = 35;
                         break;
                     default:
                         break;

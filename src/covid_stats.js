@@ -11,13 +11,13 @@ async function getCountryinfo() {
                 let divisor;
                 switch (stat) {
                     case "cases":
-                        divisor = 30000;
+                        divisor = 100000;
                         break;
                     case "deaths":
                         divisor = 2000;
                         break;
                     case "recovered":
-                        divisor = 30000;
+                        divisor = 100000;
                         break;
                     case "casesPerOneMillion":
                         divisor = 800;
